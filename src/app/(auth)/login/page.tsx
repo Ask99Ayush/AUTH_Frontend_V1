@@ -20,11 +20,45 @@ export default function LoginPage() {
     setError("");
 
     try {
+      // DUMMY LOGIN FOR TESTING - Accepts both email format and simple "admin"
+      const isDummyLogin = 
+        (email === "admin" || email === "admin@example.com") && 
+        password === "admin";
+      
+      if (isDummyLogin) {
+        console.log("✅ Using dummy admin login");
+        
+        // Create a realistic dummy token (simulate JWT format)
+        const dummyToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." + 
+                          "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkbWluIFVzZXIiLCJpYXQiOjE1MTYyMzkwMjJ9." +
+                          "SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+        
+        // Store token in AuthContext
+        setToken(dummyToken);
+        
+        // Also store user info directly in localStorage for immediate access
+        localStorage.setItem("tf_user", JSON.stringify({
+          id: "1",
+          name: "Admin User",
+          email: "admin@example.com"
+        }));
+        
+        // Redirect to feed
+        router.push("/feed");
+        return;
+      }
+
+      // Original API login for real users
       const res = await authService.login({ email, password });
       setToken(res.token);
       router.push("/feed");
     } catch (err: any) {
-      setError(err?.response?.data?.error || "Login failed");
+      // Check if it's a network error or API error
+      if (err.message === "Network Error" || !err.response) {
+        setError("Cannot connect to server. Use admin/admin for demo.");
+      } else {
+        setError(err?.response?.data?.error || "Login failed");
+      }
     } finally {
       setLoading(false);
     }
@@ -53,6 +87,27 @@ export default function LoginPage() {
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Welcome Back</h2>
             <p className="text-gray-400">Sign in to your cinematic workspace</p>
+            
+            {/* Dummy Credentials Notice */}
+            <div className="mt-4 p-3 bg-blue-900/30 border border-blue-700/50 rounded-lg">
+              <div className="flex items-start gap-2">
+                <div className="text-blue-400 mt-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm text-blue-300 font-medium mb-1">Demo Login Available</p>
+                  <p className="text-xs text-blue-400">
+                    Use <span className="font-mono bg-blue-900/50 px-1 py-0.5 rounded">admin</span> / 
+                    <span className="font-mono bg-blue-900/50 px-1 py-0.5 rounded ml-1">admin</span>
+                  </p>
+                  <p className="text-xs text-blue-400 mt-1">
+                    Or use <span className="font-mono bg-blue-900/50 px-1 py-0.5 rounded">admin@example.com</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Form */}
@@ -61,7 +116,7 @@ export default function LoginPage() {
             {/* Email field */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Email Address
+                Email or Username
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -71,11 +126,11 @@ export default function LoginPage() {
                 </div>
                 <input
                   required
-                  type="email"
+                  type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  placeholder="Enter your email"
+                  placeholder="Enter email or 'admin'"
                 />
               </div>
             </div>
@@ -97,7 +152,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  placeholder="Enter your password"
+                  placeholder="Enter password or 'admin'"
                 />
               </div>
             </div>
@@ -134,6 +189,27 @@ export default function LoginPage() {
               )}
             </button>
           </form>
+
+          {/* Quick Login Button for Demo */}
+          <div className="mt-6">
+            <button
+              onClick={() => {
+                setEmail("admin");
+                setPassword("admin");
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                  const form = document.querySelector("form");
+                  if (form) form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+                }, 100);
+              }}
+              className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-medium rounded-xl hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Quick Demo Login (admin/admin)
+            </button>
+          </div>
 
           {/* Footer */}
           <div className="mt-8 pt-6 border-t border-white/10">
