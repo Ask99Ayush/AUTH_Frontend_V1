@@ -79,10 +79,10 @@ export default function LoginPage() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-red-700 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">CF</span>
+                <span className="text-white font-bold text-xl">TF</span>
               </div>
               <h1 className="text-3xl font-bold font-netflix">
-                Cine<span className="text-gradient">Flow</span>
+                Tine<span className="text-gradient">Flow</span>
               </h1>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Welcome Back</h2>
@@ -214,7 +214,7 @@ export default function LoginPage() {
           {/* Footer */}
           <div className="mt-8 pt-6 border-t border-white/10">
             <p className="text-center text-gray-400 text-sm">
-              New to CineFlow?{" "}
+              New to TineFlow?{" "}
               <Link href="/register" className="text-primary hover:text-red-400 font-medium transition-colors">
                 Create an account
               </Link>

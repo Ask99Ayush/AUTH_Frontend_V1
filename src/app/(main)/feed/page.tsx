@@ -158,7 +158,7 @@ export default function FeedPage() {
                   <span className="text-white font-bold text-xl">CF</span>
                 </div>
                 <h1 className="text-3xl font-bold text-white">
-                  Cine<span className="text-gradient">Flow</span>
+                  Tine<span className="text-gradient">Flow</span>
                 </h1>
               </div>
               <h2 className="text-2xl font-bold text-white mb-2">Your Feed</h2>

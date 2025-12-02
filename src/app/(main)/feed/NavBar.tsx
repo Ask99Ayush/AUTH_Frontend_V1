@@ -19,7 +19,7 @@ export default function Navbar() {
                 <span className="text-white font-bold text-sm">CF</span>
               </div>
               <span className="text-lg font-bold text-white">
-                Cine<span className="text-primary">Flow</span>
+                Tine<span className="text-primary">Flow</span>
               </span>
             </Link>
           </div>

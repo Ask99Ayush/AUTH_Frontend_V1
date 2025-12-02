@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 export const metadata = {
   title: "CineFlow | Premium Task Management",
-  description: "Cinematic, Netflix-inspired team collaboration platform",
+  description: "Cinematic, team collaboration platform",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                       <h3 className="text-2xl font-bold font-netflix tracking-wider text-gradient">
-                        CineFlow
+                        TineFlow
                       </h3>
                       <p className="text-sm text-gray-400 mt-1">
                         Cinematic collaboration for modern teams
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                   </div>
                   <div className="text-center text-gray-500 text-sm mt-8 pt-4 border-t border-white/5">
-                    © 2024 CineFlow. All rights reserved.
+                    © 2025 TineFlow. All rights reserved.
                   </div>
                 </div>
               </footer>

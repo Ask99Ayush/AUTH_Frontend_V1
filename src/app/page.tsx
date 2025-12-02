@@ -27,7 +27,7 @@ export default function Home() {
             
             {/* Subtitle */}
             <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Experience task management reimagined with Netflix-inspired design, 
+              Experience task management reimagined with, 
               cinematic visuals, and premium workflows that elevate your team's productivity.
             </p>
             
@@ -79,7 +79,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Experience the Premium Difference</h2>
-            <p className="text-gray-400 text-lg">See how CineFlow transforms your workflow</p>
+            <p className="text-gray-400 text-lg">See how TineFlow transforms your workflow</p>
           </div>
           
           {/* Demo cards - Netflix style */}

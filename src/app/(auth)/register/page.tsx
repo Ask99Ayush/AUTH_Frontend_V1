@@ -46,10 +46,10 @@ export default function RegisterPage() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">CF</span>
+                <span className="text-white font-bold text-xl">TF</span>
               </div>
               <h1 className="text-3xl font-bold font-netflix">
-                Cine<span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Flow</span>
+                Tine<span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Flow</span>
               </h1>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">Join the Future</h2>

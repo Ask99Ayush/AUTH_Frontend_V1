@@ -29,13 +29,13 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-primary to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">CF</span>
+              <span className="text-white font-bold text-xl">TF</span>
             </div>
             <Link
               href="/"
               className="text-2xl font-bold font-netflix tracking-wider text-white hover:text-primary transition-colors"
             >
-              Cine<span className="text-primary">Flow</span>
+              Tine<span className="text-primary">Flow</span>
             </Link>
           </div>
 
